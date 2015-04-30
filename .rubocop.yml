@@ -1,0 +1,10 @@
+Documentation:
+  Enabled: false
+
+AllCops:
+  RunRailsCops: true
+  Exclude:
+      - 'db/**/*'
+      - 'config/**/*'
+      - 'script/**/*'
+      - 'bin/*'
