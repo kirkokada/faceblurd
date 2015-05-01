@@ -1,0 +1,19 @@
+.container
+  .jumbotron
+    %h1.center
+      Faceblurd
+    %h3.center
+      The fast, fun, and easy way to anonymize your pictures
+    .row
+      .col-md-6.col-md-offset-3
+        .h4 Get image from URL
+        = form_tag '/url', method: :get do
+          .input-group
+            = text_field_tag :img_url, params[:img_url], 
+                                     placeholder: 'http://imgurl.com/yourimage.jpg', 
+                                     class: 'form-control',
+                                     autocomplete: 'off',
+                                     id: 'img_url_input'
+            %span.input-group-btn
+              = button_tag class: 'btn btn-primary', id: 'img_url_input_submit' do
+                Fetch
