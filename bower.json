@@ -1,0 +1,6 @@
+{
+  "name": "Faceblurd",
+  "dependencies": {
+    "tracking.js": "*"
+  }
+}

@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require tracking.js/build/tracking-min
 //= require turbolinks
 //= require_tree .
