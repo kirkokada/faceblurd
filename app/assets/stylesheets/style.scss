@@ -7,8 +7,36 @@
 /* Home Page */
 
 .jumbotron {
-  margin-top: 25px;
+    margin-top: 25px;
+    max-height: 100%;
 }
+
+/* Image Page */
+
+#image {
+    width: 100%;
+}
+
+#image_submit_button {
+    display: block;
+    vertical-align: middle;
+}
+
+#image_container:hover .rect {
+    opacity: .75;
+    transition: opacity .75s ease-out;
+}
+
+.rect {
+    border-radius: 2px;
+    border: 3px solid white;
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    left: -1000px;
+    opacity: .25;
+    position: absolute;
+    top: -1000px;
+  }
 
 /* Forms */
 
