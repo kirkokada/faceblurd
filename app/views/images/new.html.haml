@@ -1,12 +1,13 @@
-.container 
+.container
   .jumbotron
     .row
       .col-md-6
         #image_container
           = image_tag @image_url, id: 'image'
       .col-md-5.col-md-offset-1
-        = form_tag "images/create", method: :post do
+        = form_tag '/create', method: :post do
           .input-group
-            = select_tag :blur_type, options_for_select(['Gaussian', 'Other']), 
+            = select_tag :blur_type,
+                         options_for_select(%w('Gaussian', 'Other')),
                          class: 'form-control'
-            = submit_tag "Blur", class: 'btn btn-primary'
+            = submit_tag 'Blur', class: 'btn btn-primary'

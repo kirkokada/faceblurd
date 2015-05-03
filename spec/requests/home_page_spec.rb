@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Pages |", type: :request do
-  describe "Home page" do
+RSpec.describe 'Pages |', type: :request do
+  describe 'Home page' do
     subject { page }
     before { visit root_path }
 
