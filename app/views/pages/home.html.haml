@@ -7,15 +7,15 @@
     .row
       .col-md-6.col-md-offset-3
         .h4 Get image from URL
-        = form_tag '/image', method: :get do
+        = form_tag '/images/new', method: :get do
           .input-group
-            = text_field_tag :img_url,
-                             params[:img_url],
+            = text_field_tag :image_url,
+                             params[:image_url],
                              placeholder: 'http://imgurl.com/yourimage.jpg',
                              class: 'form-control',
                              autocomplete: 'off',
                              id: 'img_url_input'
             %span.input-group-btn
               = button_tag class: 'btn btn-primary',
-                           id: 'img_url_input_submit' do
+                           id: 'image_url_input_submit' do
                 Fetch
