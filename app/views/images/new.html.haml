@@ -5,7 +5,7 @@
         #image_container
           = image_tag @image_url, id: 'image'
       .col-md-5.col-md-offset-1
-        = form_tag '/create', method: :post do
+        = form_tag images_path, method: :post do
           .input-group
             = select_tag :blur_type,
                          options_for_select(%w('Gaussian', 'Other')),
