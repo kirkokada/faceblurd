@@ -6,6 +6,7 @@
           = image_tag @image_url, id: 'image'
       .col-md-5.col-md-offset-1
         = form_tag images_path, method: :post do
+          = hidden_field_tag :faces, id: 'faces'
           .input-group
             = select_tag :blur_type,
                          options_for_select(%w('Gaussian', 'Other')),

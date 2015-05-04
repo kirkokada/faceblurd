@@ -14,3 +14,8 @@
 
 # Ignore bower components
 /vendor/assets/bower_components
+
+# Ignore temp files
+
+/public/uploads
+/public/.DS_Store

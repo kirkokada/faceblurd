@@ -22,5 +22,8 @@ module Faceblurd
 
     # Configure Bower
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+
+    # Include uploaders in autoload
+    config.autoload_paths += %W(#{config.root}/app/uploaders)
   end
 end

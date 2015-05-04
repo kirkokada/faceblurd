@@ -9,6 +9,8 @@ gem 'friendly_id'
 gem 'turbolinks'
 gem 'faker'
 gem 'figaro'
+gem 'carrierwave'
+gem 'rmagick'
 
 # assets
 gem 'sass-rails', '~> 5.0'

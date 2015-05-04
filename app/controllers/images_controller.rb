@@ -1,6 +1,12 @@
 class ImagesController < ApplicationController
   def new
-    # Replace with image fetching implementation later
-    @image_url = params[:image_url]
+    uploader.download!(params[:image_url])
+    @image_url = uploader.url
+  end
+
+  private
+
+  def uploader
+    @uploader ||= ImageUploader.new
   end
 end

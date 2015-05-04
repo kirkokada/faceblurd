@@ -2,12 +2,17 @@ $ ->
   img = document.getElementById 'image'
   
   tracker = new tracking.ObjectTracker('face')
+
+  faces = []
   
   tracking.track(img, tracker)
 
   tracker.on 'track', (event) ->
     event.data.forEach (rect) ->
       plotRectangle(rect.x, rect.y, rect.width, rect.height)
+      faces.push([rect.x, rect.y, rect.width, rect.height])
+
+    $('input#faces').val(faces)
 
   plotRectangle = (x, y, w, h) ->
     rect = document.createElement('div')
