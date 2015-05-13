@@ -5,7 +5,11 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new()
-    @image.remote_file_url = params[:image][:remote_file_url]
+    if params[:image][:remote_file_url]
+      @image.remote_file_url = params[:image][:remote_file_url]
+    elsif params[:image][:file]
+      @image.file = params[:image][:file]
+    end
     if @image.save
       redirect_to edit_image_path(@image)
     else
