@@ -1,14 +1,15 @@
 .container
   .jumbotron
+    %h1.center
+      Faceblurd
+    %h3.center
+      The fast, fun, and easy way to anonymize your pictures
     .row
-      .col-md-6
-        #image_container
-          = image_tag @image_url, id: 'image'
-      .col-md-5.col-md-offset-1
-        = form_tag images_path, method: :post do
-          = hidden_field_tag :faces, id: 'faces'
+      .col-md-6.col-md-offset-3
+        .h4 Get image from URL
+        = form_for @image do |f|
           .input-group
-            = select_tag :blur_type,
-                         options_for_select(%w('Gaussian', 'Other')),
-                         class: 'form-control'
-            = submit_tag 'Blur', class: 'btn btn-primary'
+            = f.text_field :remote_file_url, class: 'form-control',
+                                             placeholder: 'image.url'
+            %span.input-group-btn
+              = f.submit 'Fetch', class: 'btn btn-primary'

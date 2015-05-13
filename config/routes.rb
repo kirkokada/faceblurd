@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'images/new'
+  resources :images
 
-  post 'images', to: 'images#create' 
-
-  root 'pages#home'
+  root 'images#new'
 
   get '/about', to: 'pages#about'
 

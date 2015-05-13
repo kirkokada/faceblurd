@@ -1,0 +1,11 @@
+.container
+  .jumbotron
+    .row
+      .col-md-6
+        #image_container
+          = image_tag @image.file, id: 'image'
+      .col-md-5.col-md-offset-1
+        = form_for @image do
+          = hidden_field_tag :faces, id: 'faces'
+          = submit_tag 'Blur', class: 'btn btn-primary'
+          
