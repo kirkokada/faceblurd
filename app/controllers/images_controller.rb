@@ -33,6 +33,11 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
   end
 
+  def destroy
+    Image.find(params[:id]).destroy
+    redirect_to new_image_path
+  end
+
   private
 
   def uploader

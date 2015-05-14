@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+body {
+    background: #F5F5DC !important;
+}
+
 /* Home Page */
 
 .jumbotron {
@@ -11,10 +15,24 @@
     max-height: 100%;
 }
 
-/* Image Page */
+/* Images */
 
 #image {
     width: 100%;
+}
+
+#image_controls {
+    margin-top: 20px;
+}
+
+.picture_frame {
+    background: #FFF;
+    box-shadow: 10px 10px 5px;
+}
+
+.picture_frame img {
+    width: 100%;
+    padding: 15px 15px;
 }
 
 #image_submit_button {
