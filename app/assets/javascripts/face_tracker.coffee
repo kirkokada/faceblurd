@@ -1,4 +1,4 @@
-$(window).load ->
+$(".images.edit").ready ->
   source = new Image
   img = $('#image')
   container = $('#image_container')
