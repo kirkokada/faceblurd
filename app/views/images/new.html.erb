@@ -1,37 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3
-                col-md-8 col-md-offset-2
+                col-md-6 col-md-offset-3
                 col-sm-8 col-sm-offset-2">
       <div class="picture_frame">
         <%= image_tag 'front_page.jpg' %>
         <span id="title" class="center">
           <h1>Faceblurd</h1>
-          <h2>Anonymize yourself!</h2>
+          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#image_upload_modal">
+            Anonymize yourself!
+          </button>
         </span>
       </div>
 
       <div id="image_controls">
-        <h4>Fetch image from URL</h4>
-        <%= form_for @image do |f| %>
-          <div class="input-group">
-            <%= f.text_field :remote_file_url, 
-                             class: 'form-control',
-                             placeholder: 'http://your.com/image.jpg' %>
-            <span class="input-group-btn">
-              <%= f.submit "Fetch", class: 'btn btn-primary' %>
-            </span>
-          </div>
-        <% end %>
-        <h4>Upload image file</h4>
-        <%= form_for @image do |f| %>
-          <div class="input-group">
-            <%= f.file_field :file, class: 'form-control' %>
-            <span class="input-group-btn">
-              <%= f.submit "Upload", class: 'btn btn-primary' %>
-            </span>
-          </div>
-        <% end %>
+        <%= render 'image_upload_modal' %>
       </div>
     </div>
   </div>

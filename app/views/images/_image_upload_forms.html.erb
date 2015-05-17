@@ -1,0 +1,20 @@
+<h4>From URL</h4>
+<%= form_for @image do |f| %>
+  <div class="input-group">
+    <%= f.text_field :remote_file_url, 
+                     class: 'form-control',
+                     placeholder: 'http://your.com/image.jpg' %>
+    <span class="input-group-btn">
+      <%= f.submit "Fetch", class: 'btn btn-primary' %>
+    </span>
+  </div>
+<% end %>
+<h4>From your computer</h4>
+<%= form_for @image do |f| %>
+  <div class="input-group">
+    <%= f.file_field :file, class: 'form-control' %>
+    <span class="input-group-btn">
+      <%= f.submit "Upload", class: 'btn btn-primary' %>
+    </span>
+  </div>
+<% end %>

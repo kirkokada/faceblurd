@@ -26,14 +26,17 @@ body {
     h1 {
         font-size: 450%;
         @media screen and (max-width: $screen-xs-min) {
-            font-size: 300%;
+            font-size: 400%;
         }
     }
-    h1, h2 {
+    h1 {
         text-shadow: 1px 1px 1px #000;
     }
     @media screen and (max-width: $screen-xs-min) {
-        left: 13%;
+        left: 15%;
+    }
+    @media screen and (min-width: $screen-lg-min) {
+        left: 23%;
     }
 }
 
