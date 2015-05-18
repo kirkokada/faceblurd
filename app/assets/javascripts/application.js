@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require tracking.js/build/tracking-min
-//= require tracking.js/build/data/face-min
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require jquery.readyselector
 //= require_tree .
+//= require tracking.js/build/tracking-min
+//= require tracking.js/build/data/face-min

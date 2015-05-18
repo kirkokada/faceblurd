@@ -34,7 +34,7 @@ class ImagesController < ApplicationController
 
   def destroy
     Image.find(params[:id]).destroy
-    redirect_to new_image_path
+    redirect_to root_url
   end
 
   private

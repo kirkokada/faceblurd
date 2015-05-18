@@ -1,4 +1,7 @@
 $(".images.edit").ready ->
+  loadingModal = $("#loading_modal")
+  message = $("#loading_modal_content")
+
   source = new Image
   img = $('#image')
   container = $('#image_container')
@@ -6,27 +9,27 @@ $(".images.edit").ready ->
   tracker = new tracking.ObjectTracker('face')
 
   faces = []
-  
+
+  loadingModal.modal('show')
+  console.log 'modal activated'
+
   source.onload = ->
+    console.log 'image loaded'
     img.attr('src', source.src)
     ratio = container.width() / source.width
-    console.log(ratio)
-    localStorage.setItem("savedImageData", source.src);
-    tracking.track(
-      source,
-      tracker
-      )
+    tracking.track(source, tracker)
 
     tracker.on 'track', (event) ->
       event.data.forEach (rect) ->
-        console.log("Face detected!")
+        console.log 'face detected'
         plotRectangle(rect.x, rect.y, rect.width, rect.height, ratio)
         faces.push([rect.x, rect.y, rect.width, rect.height])
 
       $('input#faces').val(faces)
+    $('#loading_modal').modal('hide')
 
   plotRectangle = (x, y, w, h, r) ->
-    console.log("Creating rectangle div")
+    console.log 'plotting rectangle'
     rect = document.createElement('div')
     rect.classList.add 'rect'
     container.append(rect)
@@ -36,5 +39,7 @@ $(".images.edit").ready ->
     rect.style.left = (offset.left + (x*r)) + 'px'
     rect.style.top = (offset.top + (y*r)) + 'px'
 
+
   source.crossOrigin = "Anonymous"
+  console.log 'Setting image source'
   source.src = $('#image').attr('src')
