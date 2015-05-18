@@ -7,7 +7,10 @@ class ImagesController < ApplicationController
     @image = Image.new()
     set_image_file
     if @image.save
-      redirect_to edit_image_path(@image)
+      respond_to do |format|
+        format.html { redirect_to edit_image_path(@image) }
+        format.js
+      end
     else
       flash[:error] = "Please select a file source."
       respond_to do |format|
