@@ -2,8 +2,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-      <div class="picture_frame" id="image_container">
-        <%= image_tag @image.file, id: 'image' %>
+      <div class="picture_frame">
+        <div id="image_container">
+          <%= image_tag @image.file, id: 'image' %>
+        </div>
       </div>
 
       <div id="image_controls">

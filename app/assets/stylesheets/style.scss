@@ -75,11 +75,14 @@ body {
     background: #FFF;
     box-shadow: 10px 10px 5px;
     position: relative;
+    padding: 15px;
 }
 
 .picture_frame img {
     width: 100%;
-    padding: 15px 15px;
+}
+
+#image_container {
 }
 
 #image_submit_button {

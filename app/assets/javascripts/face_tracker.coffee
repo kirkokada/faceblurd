@@ -33,11 +33,12 @@ $(".images.edit").ready ->
     rect = document.createElement('div')
     rect.classList.add 'rect'
     container.append(rect)
-    offset = img.position()
+    offsetLeft = img.position().left
+    offsetTop = img.position().top
     rect.style.width = (w * r) + 'px'
     rect.style.height = (h * r) + 'px'
-    rect.style.left = (offset.left + (x*r)) + 'px'
-    rect.style.top = (offset.top + (y*r)) + 'px'
+    rect.style.left = (offsetLeft + (x*r)) + 'px'
+    rect.style.top = (offsetTop + (y*r)) + 'px'
 
 
   source.crossOrigin = "Anonymous"
