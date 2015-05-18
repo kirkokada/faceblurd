@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root 'images#new'
+  
   resources :images
-
-  root to: 'images#new', as: '/'
 
   get '/about', to: 'pages#about'
 
