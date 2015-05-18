@@ -5,15 +5,14 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new()
-    if params[:image][:remote_file_url]
-      @image.remote_file_url = params[:image][:remote_file_url]
-    elsif params[:image][:file]
-      @image.file = params[:image][:file]
-    end
+    set_image_file
     if @image.save
       redirect_to edit_image_path(@image)
     else
-      render :new
+      flash[:error] = "Please select a file source."
+      respond_to do |format|
+        format.js { render 'shared/display_flash_messages' }
+      end
     end
   end
 
@@ -40,7 +39,12 @@ class ImagesController < ApplicationController
 
   private
 
-  def uploader
-    @uploader ||= ImageUploader.new
+  def set_image_file
+    return unless params[:image]
+    if params[:image][:remote_file_url]
+      @image.remote_file_url = params[:image][:remote_file_url]
+    elsif params[:image][:file]
+      @image.file = params[:image][:file]
+    end
   end
 end
