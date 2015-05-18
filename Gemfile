@@ -11,7 +11,6 @@ gem 'faker'
 gem 'figaro'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'friendly_id'
 
 # assets
 gem 'sass-rails', '~> 5.0'
