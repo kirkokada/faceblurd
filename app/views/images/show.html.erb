@@ -3,13 +3,21 @@
     <div class="col-md-4 col-md-offset-4">
       <div class="picture_frame">
         <%= image_tag @image.file %>
-      </div>
-
-      <div id="image_controls">
-        <%= link_to "Delete", 
-                    image_path(@image), 
-                    method: :delete,
-                    class: "btn btn-danger form-control" %>
+        <div id="image_controls" class="center">
+          <ul>
+            <li>
+              <a tabindex="0"><span class="glyphicon glyphicon-cog"></span></a>
+            </li>
+            <li>
+              <a tabindex="0"><span class="glyphicon glyphicon-share main"></span></a>
+            </li>
+            <li>
+              <%= link_to image_path(@image), method: :delete  do %>
+                <span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

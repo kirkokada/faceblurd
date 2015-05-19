@@ -6,13 +6,24 @@
         <div id="image_container">
           <%= image_tag @image.file, id: 'image' %>
         </div>
-      </div>
-
-      <div id="image_controls">
-        <%= form_for @image do |f| %>
-          <%= hidden_field_tag :faces %>
-          <%= f.submit "Blur", class: 'btn-primary form-control' %>
-        <% end %>
+        <div id="image_controls" class="center">
+          <ul>
+            <li>
+              <a tabindex="0"><span class="glyphicon glyphicon-cog"></span></a>
+            </li>
+            <li>
+              <a tabindex="0"><span class="glyphicon glyphicon-eye-close main"></span></a>
+            </li>
+            <li>
+              <%= link_to image_path(@image), method: :delete  do %>
+                <span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+            </li>
+          </ul>
+          <%= form_for @image, html: { class: "form-inline", id: "image_form" } do |f| %>
+            <%= hidden_field_tag :faces %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
