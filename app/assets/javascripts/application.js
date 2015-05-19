@@ -18,3 +18,6 @@
 //= require_tree .
 //= require tracking.js/build/tracking-min
 //= require tracking.js/build/data/face-min
+//= require nprogress
+//= require nprogress-turbolinks
+//= require jquery.remotipart

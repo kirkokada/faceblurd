@@ -190,6 +190,7 @@ GEM
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    nprogress-rails (0.1.6.7)
     orm_adapter (0.5.0)
     pg (0.18.2)
     polyamorous (1.2.0)
@@ -341,6 +342,7 @@ DEPENDENCIES
   guard-rspec
   haml-rails
   jquery-rails
+  nprogress-rails
   pg
   puma
   rails (= 4.2.1)
