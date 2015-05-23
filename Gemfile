@@ -4,13 +4,16 @@ ruby '2.2.0'
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'puma'
-gem 'haml-rails'
 gem 'friendly_id'
 gem 'turbolinks'
-gem 'faker'
 gem 'figaro'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'ruby-imgur'
+gem 'omniauth'
+gem 'omniauth-imgur', path: '../omniauth-imgur'
+gem 'thin'
+gem 'httmultiparty'
 
 # assets
 gem 'sass-rails', '~> 5.0'
@@ -23,12 +26,6 @@ gem 'remotipart'
 gem 'nprogress-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bower-rails'
-
-# authentication
-gem 'devise'
-
-# Active Admin
-gem 'activeadmin', github: 'activeadmin'
 
 group :development, :test do
   gem 'byebug'

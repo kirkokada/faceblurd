@@ -33,12 +33,26 @@ class ImagesController < ApplicationController
 
   def show
     find_image
+    session[:image_id] = @image.id
   end
 
   def destroy
     find_image
-    @image.destroy
+    image.destroy
     redirect_to root_path
+  end
+
+  def auth_callback
+    image = Image.friendly.find(session[:image_id])
+    image_file = image.file.read
+    auth = request.env["omniauth.auth"]
+    i = Imgur.new(auth['credentials']['token'])
+    if i.upload(image_file)
+      redirect_to i.link
+    else
+      flash[:error] = 'Image upload failed'
+      redirect_to image
+    end
   end
 
   private
