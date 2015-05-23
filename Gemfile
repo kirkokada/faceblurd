@@ -11,7 +11,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'ruby-imgur'
 gem 'omniauth'
-gem 'omniauth-imgur', path: '../omniauth-imgur'
+gem 'omniauth-imgur'
 gem 'thin'
 gem 'httmultiparty'
 
