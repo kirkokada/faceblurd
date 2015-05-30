@@ -1,10 +1,3 @@
-PATH
-  remote: ../omniauth-imgur
-  specs:
-    omniauth-imgur (0.0.0)
-      omniauth (~> 1)
-      omniauth-oauth2 (~> 1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -171,6 +164,9 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-imgur (0.0.0)
+      omniauth (~> 1)
+      omniauth-oauth2 (~> 1)
     omniauth-oauth2 (1.3.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
@@ -325,7 +321,7 @@ DEPENDENCIES
   jquery-rails
   nprogress-rails
   omniauth
-  omniauth-imgur!
+  omniauth-imgur
   pg
   puma
   rails (= 4.2.1)

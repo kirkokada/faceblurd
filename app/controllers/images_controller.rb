@@ -4,7 +4,6 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new()
     set_image_file
     if @image.save
       respond_to do |format|
@@ -12,7 +11,7 @@ class ImagesController < ApplicationController
         format.js
       end
     else
-      flash[:error] = "Please select a file source."
+      flash[:error] = 'Please select a file source.'
       respond_to do |format|
         format.js { render 'shared/display_flash_messages' }
       end
@@ -38,35 +37,47 @@ class ImagesController < ApplicationController
 
   def destroy
     find_image
-    image.destroy
+    @image.destroy
     redirect_to root_path
   end
 
   def auth_callback
-    image = Image.friendly.find(session[:image_id])
-    image_file = image.file.read
-    auth = request.env["omniauth.auth"]
-    i = Imgur.new(auth['credentials']['token'])
-    if i.upload(image_file)
-      redirect_to i.link
+    imgur = Imgur.new(imgur_auth_token)
+    if imgur.upload(read_image_file)
+      redirect_to imgur.link
     else
-      flash[:error] = 'Image upload failed'
-      redirect_to image
+      redirect_to image, error: 'Image uplaod failed.'
     end
   end
 
   private
 
-    def set_image_file
-      return unless params[:image]
-      if params[:image][:remote_file_url]
-        @image.remote_file_url = params[:image][:remote_file_url]
-      elsif params[:image][:file]
-        @image.file = params[:image][:file]
-      end
-    end
+  def imgur_auth_token
+    request.env['omniauth.auth']['credentials']['token']
+  end
 
-    def find_image
-      @image = Image.friendly.find(params[:id])
-    end
+  def read_image_file
+    Image.friendly.find(session[:image_id]).file.read
+  end
+
+  def set_image_file
+    return unless params[:image]
+    @image = Image.new
+    set_image_from_url
+    set_image_from_file
+  end
+
+  def set_image_from_url
+    return unless params[:image][:remote_file_url]
+    @image.remote_file_url = params[:image][:remote_file_url]
+  end
+
+  def set_image_from_file
+    return unless params[:image][:file]
+    @image.file = params[:image][:file]
+  end
+
+  def find_image
+    @image = Image.friendly.find(params[:id])
+  end
 end
