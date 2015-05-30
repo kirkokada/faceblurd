@@ -6,15 +6,10 @@ class ImagesController < ApplicationController
   def create
     set_image_file
     if @image.save
-      respond_to do |format|
-        format.html { redirect_to edit_image_path(@image) }
-        format.js
-      end
+      redirect_to edit_image_path(@image)
     else
       flash[:error] = 'Please select a file source.'
-      respond_to do |format|
-        format.js { render 'shared/display_flash_messages' }
-      end
+      render :new
     end
   end
 

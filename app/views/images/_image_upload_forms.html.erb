@@ -1,5 +1,5 @@
 <h4>From URL</h4>
-<%= form_for @image, remote: true, authenticity_token: true do |f| %>
+<%= form_for @image do |f| %>
   <div class="input-group">
     <%= f.text_field :remote_file_url, 
                      class: 'form-control',
@@ -10,7 +10,7 @@
   </div>
 <% end %>
 <h4>From your computer</h4>
-<%= form_for @image, html: { mutlipart: true }, remote: true, authenticity_token: true do |f| %>
+<%= form_for @image, html: { mutlipart: true } do |f| %>
   <div class="input-group">
     <%= f.file_field :file, class: 'form-control' %>
     <span class="input-group-btn">

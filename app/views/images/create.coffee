@@ -1,1 +1,0 @@
-window.location.href = "<%= edit_image_path(@image) %>"
