@@ -1,0 +1,32 @@
+require 'rails_helper'
+
+RSpec.describe 'ImageUploads', type: :request do
+  feature "Uploading images", js: true do
+    background do
+      visit root_path
+      click_button "Anonymize yourself!"
+    end
+
+    feature "via local file" do
+      
+      scenario 'with an invalid file' do
+        expect do
+          attach_file :image_file,
+                      File.join(Rails.root, '/spec/fixtures/files/text.txt')
+          click_button "Upload"
+        end.not_to change(Image, :count)
+        expect(page).to have_button "Anonymize yourself!"
+      end
+
+      scenario "with a valid file" do
+        expect do
+          attach_file :image_file,
+                      File.join(Rails.root, '/spec/fixtures/files/image.jpg')
+          click_button "Upload"
+        end.to change(Image, :count).by(1)
+        image = Image.last
+        expect(page).to have_css "img[src*='#{image.file}']"
+      end
+    end
+  end
+end

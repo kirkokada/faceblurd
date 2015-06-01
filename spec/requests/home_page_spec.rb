@@ -5,8 +5,8 @@ RSpec.describe 'Pages |', type: :request do
     subject { page }
     before { visit root_path }
 
-    it { should have_selector 'input#img_url_input' }
     it { should have_title 'Faceblurd' }
     it { should have_content 'Faceblurd' }
+    it { should have_button 'Anonymize' }
   end
 end

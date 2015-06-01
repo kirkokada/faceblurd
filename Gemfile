@@ -36,6 +36,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
   gem 'rb-fsevent'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :test do
