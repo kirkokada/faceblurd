@@ -28,5 +28,29 @@ RSpec.describe 'ImageUploads', type: :request do
         expect(page).to have_css "img[src*='#{image.file}']"
       end
     end
+
+    feature "via URL" do
+      
+      scenario 'with invalid URL' do
+        VCR.use_cassette('image upload invalid url') do
+          expect do
+            fill_in 'image_remote_file_url', with: 'http://i.imgur.com/oRp2I8o'
+            click_button 'Fetch'
+          end.not_to change(Image, :count)
+        end
+        expect(page).to have_button "Anonymize yourself!"
+      end
+
+      scenario 'with valid URL' do
+        VCR.use_cassette('image upload valid url') do
+          expect do
+            fill_in "image_remote_file_url", with: "http://i.imgur.com/oRp2I8o.jpg"
+            click_button 'Fetch'
+          end.to change(Image, :count).by(1)
+        end
+        image = Image.last
+        expect(page).to have_css "img[src*='#{image.file}']"
+      end
+    end
   end
 end
