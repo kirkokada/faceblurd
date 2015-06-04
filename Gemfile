@@ -46,6 +46,7 @@ group :test do
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 group :production do

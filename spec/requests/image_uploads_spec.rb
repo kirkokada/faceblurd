@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'ImageUploads', type: :request do
+RSpec.describe 'Image uploads:', type: :request do
   feature "Uploading images", js: true do
     background do
       visit root_path

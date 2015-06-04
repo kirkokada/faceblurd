@@ -9,6 +9,7 @@ $(".images.edit").ready ->
   tracker = new tracking.ObjectTracker('face')
 
   faces = []
+  faceDetected = false
 
   loadingModal.modal('show')
   console.log 'modal activated'
@@ -26,7 +27,10 @@ $(".images.edit").ready ->
         faces.push([rect.x, rect.y, rect.width, rect.height])
 
       $('input#faces').val(faces)
-    $('#loading_modal').modal('hide')
+      if event.data.length > 0
+        message.html('Face detected!')
+      else
+        message.html('No faces detected.')
 
   plotRectangle = (x, y, w, h, r) ->
     console.log 'plotting rectangle'

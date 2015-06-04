@@ -1,6 +1,6 @@
 require 'capybara/rspec'
 require 'vcr'
-
+require 'support/wait_for_ajax'
 
 VCR.configure do |config|
   config.cassette_library_dir = "fixtures/vcr_cassettes"
@@ -11,11 +11,23 @@ end
 RSpec.configure do |config|
   config.include Capybara::DSL
 
-  # Remove uploaded files after each test
+  # Remove uploaded files after all tests
   config.after(:each) do
     if Rails.env.test? || Rails.env.cucumber?
       FileUtils.rm_rf(Dir["#{Rails.root}/public/spec/support/uploads"])
     end
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 
   # rspec-expectations config goes here. You can use an alternate

@@ -15,6 +15,7 @@ class FaceBlocker
       face_image = constitute_image(face, get_face_pixels(face))
       overlay_blurred_image(face, face_image)
       image.write(file_path)
+      image.destroy!
     end
   end
 
